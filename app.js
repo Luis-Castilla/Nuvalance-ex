@@ -5,7 +5,7 @@ const swaggerSpec = require('./src/swagger/swaggerConfig')
 const swaggerUi = require('swagger-ui-express')
 
 const app = express()
-// Middleware para parsear el cuerpo de la solicitud como JSON
+// Middleware to parse body to JSON
 app.use(express.json())
 // Swagger Json
 app.use('/swagger.json', (req, res) => {
