@@ -15,7 +15,7 @@ const productController = require('../controllers/rectangles-controller')
  * @param {Object} res - Express response object.
  */
 router.post('/rectangles', (req, res) => {
-    productController.RectangleAnalizer(req, res)
+  productController.RectangleAnalizer(req, res)
 })
 
 module.exports = router

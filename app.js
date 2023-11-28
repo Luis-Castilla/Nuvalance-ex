@@ -9,8 +9,8 @@ const app = express()
 app.use(express.json())
 // Swagger Json
 app.use('/swagger.json', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
-    res.send(swaggerSpec)
+  res.setHeader('Content-Type', 'application/json')
+  res.send(swaggerSpec)
 })
 
 // Swagger UI
@@ -21,10 +21,10 @@ app.use('/api/v1', routes)
 
 // Route not found (404)
 app.use((req, res) => {
-    return res.status(404).send({
-        code: 'NOT_FOUND_ROUTE',
-        message: `Route ${req.url} Not found.`,
-    })
+  return res.status(404).send({
+    code: 'NOT_FOUND_ROUTE',
+    message: `Route ${req.url} Not found.`,
+  })
 })
 
 module.exports = app

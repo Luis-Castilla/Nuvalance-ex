@@ -6,7 +6,7 @@
  * @returns {Object} res - Express response object.
  */
 function setResponseWithError(res, status, message) {
-    return res.status(status).send({ message })
+  return res.status(status).send({ message })
 }
 
 /**
@@ -17,10 +17,10 @@ function setResponseWithError(res, status, message) {
  * @returns {Object} res - Express response object.
  */
 function setResponseWithOk(res, status, data) {
-    return res.status(status).json(data)
+  return res.status(status).json(data)
 }
 
 module.exports = {
-    setResponseWithError,
-    setResponseWithOk,
+  setResponseWithError,
+  setResponseWithOk,
 }
