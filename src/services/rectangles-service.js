@@ -34,17 +34,18 @@ const RectanglesAnalizer = (rectangleA, rectangleB) => {
     }
     // eslint-disable-next-line no-useless-catch
     try {
+        const isContained = calculateIsContained(rectangleA, rectangleB)
+        if (isContained) {
+            response.isContained = isContained
+            return response
+        }
+
         const intersectionPoints = calculateIntersection(rectangleA, rectangleB)
         if (intersectionPoints) {
             response.intersectionPoints = intersectionPoints
             return response
         }
 
-        const isContained = calculateIsContained(rectangleA, rectangleB)
-        if (isContained) {
-            response.isContained = isContained
-            return response
-        }
         const isAdjacent = calculateIsAdjacent(rectangleA, rectangleB)
         if (isAdjacent) {
             response.isAdjacent = isAdjacent
@@ -171,12 +172,12 @@ const checkProperAdjacent = (rectangleA, rectangleB) => {
 
     const adjacentY =
         (rectangleB.x + rectangleB.width === rectangleA.x &&
-            rectangleA.width === rectangleB.width) ||
+            rectangleA.height === rectangleB.height) ||
         (rectangleA.x + rectangleA.width === rectangleB.x &&
-            rectangleA.width === rectangleB.width)
+            rectangleA.height === rectangleB.height)
 
     if (adjacentX || adjacentY) {
-        return 'Proper Adjacent'
+        return 'Is Proper Adjacent'
     }
 }
 
