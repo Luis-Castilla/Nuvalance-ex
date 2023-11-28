@@ -19,10 +19,10 @@ const {
  * @returns {Promise<Object>} The product data if found.
  * @throws {Error} If the product is not found or an error occurs.
  */
-const RectangleAnalizer = async (req, res) => {
+const RectangleAnalizer = (req, res) => {
     try {
         const { rectangleA, rectangleB } = req.body
-        const analysisResult = await rectangleService.RectanglesAnalizer(
+        const analysisResult = rectangleService.RectanglesAnalizer(
             rectangleA,
             rectangleB
         )

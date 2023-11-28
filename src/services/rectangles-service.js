@@ -4,15 +4,29 @@
  */
 
 /**
+ * @typedef {Object} Rectangle
+ * @property {number} x - The x-coordinate of the top-left corner of the rectangle.
+ * @property {number} y - The y-coordinate of the top-left corner of the rectangle.
+ * @property {number} height - The height of the rectangle.
+ * @property {number} width - The width of the rectangle.
+ */
+
+/**
+ * @typedef {Object} Response
+ * @property {string} intersectionPoints - The intersection points.
+ * @property {string} isContained - If RectangleA or RectangleB is contained within the other
+ * @property {string} isAdjacent - If RectangleA is Proper Adjacent, Is Sub-line Adjacent, Is Partial Adjacent or neither to RectangleB
+ */
+
+/**
  * Analize Intersection, Containment and Adjacency of two rectangles.
  *
- * @function RectanglesAnalizer
- * @async
- * @param {Object} rectangleA - The initial coordenates of the A rectangle and its height and width.
- * @param {Object} rectangleB - The initial coordenates of the B rectangle and its height and width.
- * @returns {Promise<Object>} The rectangles analisis results.
+ * @function
+ * @param {Rectangle} rectangleA - The initial coordenates of the A rectangle and its height and width.
+ * @param {Rectangle} rectangleB - The initial coordenates of the B rectangle and its height and width.
+ * @returns {Response} The rectangles analisis results.
  */
-const RectanglesAnalizer = async (rectangleA, rectangleB) => {
+const RectanglesAnalizer = (rectangleA, rectangleB) => {
     const response = {
         intersectionPoints: 'There is not intersection',
         isContained: 'Is not Contained',
@@ -43,6 +57,13 @@ const RectanglesAnalizer = async (rectangleA, rectangleB) => {
     }
 }
 
+/**
+ * Calculates the intersection points of two rectangles.
+ * @function
+ * @param {Object} rectangleA - The initial coordinates of the A rectangle and its height and width.
+ * @param {Object} rectangleB - The initial coordinates of the B rectangle and its height and width.
+ * @returns {Object|null} The intersection points or null if there is no intersection.
+ */
 const calculateIntersection = (rectangleA, rectangleB) => {
     const xOverlap = Math.max(
         0,
@@ -89,6 +110,14 @@ const calculateIntersection = (rectangleA, rectangleB) => {
     }
 }
 
+/**
+ * Checks if one rectangle is contained within another.
+ *
+ * @function
+ * @param {Object} rectangleA - The initial coordinates of the A rectangle and its height and width.
+ * @param {Object} rectangleB - The initial coordinates of the B rectangle and its height and width.
+ * @returns {string|null} 'Is Contained' if one rectangle is contained within the other, otherwise null.
+ */
 const calculateIsContained = (rectangleA, rectangleB) => {
     const x1Contained = rectangleA.x <= rectangleB.x
     const y1Contained = rectangleA.y <= rectangleB.y
@@ -107,6 +136,14 @@ const calculateIsContained = (rectangleA, rectangleB) => {
     return isBInsideA || isAInsideB ? 'Is Contained' : null
 }
 
+/**
+ * Checks the adjacency between two rectangles.
+ *
+ * @function
+ * @param {Object} rectangleA - The initial coordinates of the A rectangle and its height and width.
+ * @param {Object} rectangleB - The initial coordinates of the B rectangle and its height and width.
+ * @returns {string|null} The type of adjacency between the rectangles or null if not adjacent.
+ */
 const calculateIsAdjacent = (rectangleA, rectangleB) => {
     const checkedProper = checkProperAdjacent(rectangleA, rectangleB)
     if (checkedProper) return checkedProper
@@ -117,6 +154,14 @@ const calculateIsAdjacent = (rectangleA, rectangleB) => {
     return null
 }
 
+/**
+ * Checks for proper adjacency between two rectangles.
+ *
+ * @function
+ * @param {Object} rectangleA - The initial coordinates of the A rectangle and its height and width.
+ * @param {Object} rectangleB - The initial coordinates of the B rectangle and its height and width.
+ * @returns {string|undefined} 'Proper Adjacent' if properly adjacent, otherwise undefined.
+ */
 const checkProperAdjacent = (rectangleA, rectangleB) => {
     const adjacentX =
         (rectangleA.y + rectangleA.height === rectangleB.y &&
@@ -135,6 +180,14 @@ const checkProperAdjacent = (rectangleA, rectangleB) => {
     }
 }
 
+/**
+ * Checks for sub-line adjacency between two rectangles.
+ *
+ * @function
+ * @param {Object} rectangleA - The initial coordinates of the A rectangle and its height and width.
+ * @param {Object} rectangleB - The initial coordinates of the B rectangle and its height and width.
+ * @returns {string|undefined} 'Is Sub-line Adjacent' if sub-line adjacent, otherwise undefined.
+ */
 const checkSublineAdjacent = (rectangleA, rectangleB) => {
     const isSublineOnX =
         (rectangleB.y + rectangleB.height <= rectangleA.y &&
@@ -161,6 +214,14 @@ const checkSublineAdjacent = (rectangleA, rectangleB) => {
     }
 }
 
+/**
+ * Checks for partial adjacency between two rectangles.
+ *
+ * @function
+ * @param {Object} rectangleA - The initial coordinates of the A rectangle and its height and width.
+ * @param {Object} rectangleB - The initial coordinates of the B rectangle and its height and width.
+ * @returns {string|undefined} 'Is Partial Adjacent' if partially adjacent, otherwise undefined.
+ */
 const checkPartialAdjacent = (rectangleA, rectangleB) => {
     const isPartialOnX =
         rectangleA.y === rectangleB.y + rectangleB.height ||

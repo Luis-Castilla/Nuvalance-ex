@@ -8,8 +8,8 @@ const productController = require('../controllers/rectangles-controller')
  */
 
 /**
- * Route to retrieve all products.
- * @name GET /api/v1/rectangles
+ * Route to retrieve rectanlges analysis.
+ * @name POST /api/v1/rectangles
  * @function
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
