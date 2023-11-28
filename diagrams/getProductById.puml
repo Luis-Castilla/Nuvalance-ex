@@ -1,0 +1,13 @@
+title Retrieve Product by ID
+
+note over Client,Server: ID: product ID
+Client->Server: GET /api/v1/products/:id
+Server->DummyJsonApi: async getProductById()
+Server<--DummyJsonApi: Response from Api
+alt error fetching data 500
+Client<--Server: Error Response
+end
+alt Not Found 404
+Client<--Server: Not Found Response
+end
+Client<--Server: OK Response

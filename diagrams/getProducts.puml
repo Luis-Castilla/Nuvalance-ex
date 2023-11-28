@@ -1,0 +1,17 @@
+title Retrieve All Products
+
+note over Client,Server: QueryParams: limit, skip, select, q
+Client->Server: GET /api/v1/products
+
+note over Server,DummyJsonApi: If **q param** exists, we fetch \nto **/products/search?q=...**
+
+
+Server->DummyJsonApi: getProducts()
+
+Server<--DummyJsonApi: Response from Api
+
+alt error fetching data 500
+Client<--Server: Error Response
+end
+
+Client<--Server: OK Response

@@ -1,0 +1,41 @@
+{
+    "name": "nuvalance-ex",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./bin/www",
+        "start:dev": "nodemon ./bin/www",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint:check": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "jsdoc": "jsdoc ./src -r"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Luis-Castilla/masu-tl.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Luis-Castilla/masu-tl/issues"
+    },
+    "homepage": "https://github.com/Luis-Castilla/masu-tl#readme",
+    "dependencies": {
+        "axios": "^1.6.0",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.53.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.1",
+        "jsdoc": "~4.0.2",
+        "nodemon": "^3.0.1",
+        "prettier": "^3.0.3"
+    }
+}
